@@ -20,6 +20,11 @@
   <div class="col-md-3">
     <div class="thumbnail">
       <div class = "thumbnailButton">
+        <div class = "like">
+          <%= form_for(collection, url: like_colletion_path(colection)) do |f| %>
+          <%= image_submit_tag("like.jpg", :class => "btn btn-default like-button") %>
+          <% end %>
+        </div>  
         <% if user_signed_in? %>
           <%= link_to '編集', edit_collection_path(collection), :class => "btn btn-info"%>
           <%= link_to '削除', collection, :class => "btn btn-danger", method: :delete, data: { confirm: '本当に消しますか?' } %>
@@ -31,6 +36,7 @@
       <div class="caption">
         <h4><%= collection.title %></h4>
         <p><%= collection.body %></p>
+        <p><%= img_tag("like.jpg" , :class =>"like-thumbnail-button") %><%= collection.like_count %></span></p>
       </div>
     </div>
   </div>

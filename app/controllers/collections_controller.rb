@@ -1,6 +1,6 @@
 class CollectionsController < ApplicationController
   before_action :set_collection, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :like]
   # GET /collections
   # GET /collections.json
   def index
@@ -60,6 +60,15 @@ class CollectionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def like
+    @collection = Colection.find(params[:id])
+    @collection.like_count += 1
+
+    if @collection.save
+        radirect_to collections_path,  notice: 'いいね！しました。'
+    end
+  end    
 
   private
     # Use callbacks to share common setup or constraints between actions.
