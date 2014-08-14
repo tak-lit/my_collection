@@ -1,0 +1,38 @@
+<%= form_for(@collection) do |f| %>
+<% if @collection.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@collection.errors.count, "error") %> prohibited this collection from being saved:</h2>
+
+  <ul>
+    <% @collection.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="form-group">
+  <div class="field">
+    タイトル<br>
+    <%= f.text_field :title, :class => "form-control" %>
+  </div>
+</div>
+<!-- 写真機能はここから！ -->
+<div class="form-group">
+  <div class="field">
+    写真<br>
+    <%=f.file_field:picture,:class =>"form-control"%>
+  </div>
+</div>
+<!-- 写真機能はここまで！-->
+<div class="form-group">
+  <div class="field">
+    説明文<br>
+    <%= f.text_area :body, :class => "form-control" %>
+  </div>
+</div>
+<div class="actions">
+  <%= f.submit :class => "btn btn-info" %>
+</div>
+
+<% end %>

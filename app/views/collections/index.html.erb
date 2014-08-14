@@ -1,0 +1,39 @@
+<!-- ここからヘッダー画像のエリア -->
+<div class = "row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-body my-cover">
+        <h3>@Nasi's collection</h3>
+      </div>
+      <div class="panel-footer"></div>
+      <%= image_tag('my_thumbnail.jpg', :class => "my-thumbnail img-thumbnail") %>
+    </div>
+  </div>
+</div>
+<!-- ここまでヘッダー画像のエリア -->
+
+<h4>@Collection of Mr.nasi</h4>
+
+<!-- ここからコレクションのエリア -->
+<div class = "row">
+  <% @collections.each do |collection| %>
+  <div class="col-md-3">
+    <div class="thumbnail">
+      <div class = "thumbnailButton">
+        <% if user_signed_in? %>
+          <%= link_to '編集', edit_collection_path(collection), :class => "btn btn-info"%>
+          <%= link_to '削除', collection, :class => "btn btn-danger", method: :delete, data: { confirm: '本当に消しますか?' } %>
+        <% end %>
+      </div>
+      <div class="thumbnailImage">
+        <%= image_tag(collection.picture_url)if collection.picture.present? %>
+      </div>
+      <div class="caption">
+        <h4><%= collection.title %></h4>
+        <p><%= collection.body %></p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+<!-- ここまでコレクションのエリア -->
