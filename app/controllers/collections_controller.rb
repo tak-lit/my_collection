@@ -62,11 +62,11 @@ class CollectionsController < ApplicationController
   end
 
   def like
-    @collection = Colection.find(params[:id])
+    @collection = Collection.find(params[:id])
     @collection.like_count += 1
 
     if @collection.save
-        radirect_to collections_path,  notice: 'いいね！しました。'
+        redirect_to collections_path,  notice: 'いいね！しました。'
     end
   end    
 

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'collections#index'
 
   #追加するルーティング
-  pttch 'collections/like/:id', :to => 'collections#like', :as => :like_collection
+  patch 'collections/like/:id', :to => 'collections#like', :as => :like_collection
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

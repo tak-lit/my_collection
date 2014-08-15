@@ -21,7 +21,7 @@
     <div class="thumbnail">
       <div class = "thumbnailButton">
         <div class = "like">
-          <%= form_for(collection, url: like_colletion_path(colection)) do |f| %>
+          <%= form_for(collection, url: like_collection_path(collection)) do |f| %>
           <%= image_submit_tag("like.jpg", :class => "btn btn-default like-button") %>
           <% end %>
         </div>  
@@ -36,7 +36,7 @@
       <div class="caption">
         <h4><%= collection.title %></h4>
         <p><%= collection.body %></p>
-        <p><%= img_tag("like.jpg" , :class =>"like-thumbnail-button") %><%= collection.like_count %></span></p>
+        <p><%= image_tag("like.jpg" , :class =>"like-thumbnail-button") %><%= collection.like_count %></span></p>
       </div>
     </div>
   </div>
