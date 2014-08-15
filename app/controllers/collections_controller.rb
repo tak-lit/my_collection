@@ -1,6 +1,8 @@
 class CollectionsController < ApplicationController
   before_action :set_collection, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :like]
+  before_action :checklogin
+  
   # GET /collections
   # GET /collections.json
   def index
@@ -81,4 +83,11 @@ class CollectionsController < ApplicationController
     def collection_params
       params.require(:collection).permit(:title, :body, :picture)
     end
+
+     def checklogin
+    unless current_user
+      redirect_to '/about'
+    end
+  end
+
 end

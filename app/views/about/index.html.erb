@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%= stylesheet_link_tag    "application", media: "all" %>
+  	<%= javascript_include_tag "application" %>
+  	<%= csrf_meta_tags %>
+  	
+</head>
+<body id="about">	
+<div class="container">
+	
+	<!-- コンテンツ部分 -->
+	<div class="content row clearfix">
+		<!-- サイドバー（左）部分 -->
+		<div class="mainSide grid-4">
+			<!-- TwiterやFacebookリンク
+				================================================== -->
+			<aside>
+				<h3>おすすめリンク</h3>
+				<ul class="social">
+					<li><a href="http://dan-ball.jp/javagame/dust/">粉ゲーム</a></li>
+					<li><a href="http://suznooto.com/">すずぬーと</a></li>
+					<li><a href="http://www.wowgame.jp/">wowgame</a></li>
+				</ul>
+			</aside>
+			<aside>
+				<!-- 自己紹介
+					================================================== -->
+				<h3>プロフィール</h3>
+				<p>はじめまして！<br>
+				   サイト制作をした、Mr.nasi です。<br>
+				   今は、中学校行っています。<br>
+				   好きなものを、かき集めたページです。</p>
+			</aside>
+		</div>
+		<!-- メインコンテンツ（右）部分 -->
+		<div class="entryContent grid-8">
+			<div class="list grid-12">
+					<ul class="bxslider">
+					<!-- スライド画像
+						================================================== -->
+						<li>
+							<!--1枚目の画像-->
+      						<%= image_tag('nasi.jpg', height: "428", width: "640")  %>
+
+						</li>
+						<li>
+							<!--2枚目の画像をここから入れるよ！-->
+      						<%= image_tag('apple.jpg', height: "428", width: "640") %>
+							
+
+						</li>
+						<li>
+							<!--3枚目の画像をここから入れるよ！-->
+   						   <%= image_tag('graps.jpg', height: "428", width: "640") %>
+									
+
+						</li>
+					</ul>
+					<!-- サイトの説明
+						================================================== -->
+					<h2>ようこそ！</h2>
+					<p>楽しんでいってください！</p>
+				</div>
+				
+			
+	</div>
+</div>
+
+</body>
+</html>

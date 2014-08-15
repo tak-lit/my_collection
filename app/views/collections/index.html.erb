@@ -58,9 +58,10 @@
           <% end %>
         </div>  
         <% if user_signed_in? %>
-          <%= link_to '編集', edit_collection_path(collection), :class => "btn btn-info"%>
+          <%= link_to '編集', edit_collection_path(collection), :class => "btn btn-info" %>
           <%= link_to '削除', collection, :class => "btn btn-danger", method: :delete, data: { confirm: '本当に消しますか?' } %>
         <% end %>
+        
       </div>
       <a href="#myModal_<%= collection.id %>" data-toggle="modal">
         <div class="thumbnailImage">
