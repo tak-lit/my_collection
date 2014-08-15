@@ -17,6 +17,38 @@
 <!-- ここからコレクションのエリア -->
 <div class = "row">
   <% @collections.each do |collection| %>
+
+  <!-- ここからModalのエリア -->
+ <div class="modal fade" id="myModal_<%= collection.id %>" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+   <div class="modal-content">
+    <div class="modal-header">
+     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+     <h4 class="modal-title" id="myModalLabel"><%= collection.title %></h4>
+    </div>
+    <div class="modal-body center">
+     <div class="modal-image">
+      <%= image_tag(collection.picture_url) if collection.picture.present? %>
+     </div>
+     <div>
+      <p><%= collection.body %></p>
+     </div>
+    </div>
+    <div class="modal-footer">
+     <div class="modal-comment">
+      <%= image_tag("comment.jpg") %>
+      <%= form_for(@comment) do |f| %>
+      <%= f.text_area :body, :class => "form-control" %>
+      <%= f.hidden_field :collection_id, :value => collection.id %>
+      <%= f.submit "コメント", :class => "btn btn-danger modal-comment-button" %>
+      <% end %>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+  <!-- ここまでModalのエリア -->
+
   <div class="col-md-3">
     <div class="thumbnail">
       <div class = "thumbnailButton">
@@ -30,6 +62,7 @@
           <%= link_to '削除', collection, :class => "btn btn-danger", method: :delete, data: { confirm: '本当に消しますか?' } %>
         <% end %>
       </div>
+      <a href="#myModal_<%= collection.id %>" data-toggle="model">
       <div class="thumbnailImage">
         <%= image_tag(collection.picture_url)if collection.picture.present? %>
       </div>
@@ -38,6 +71,16 @@
         <p><%= collection.body %></p>
         <p><%= image_tag("like.jpg" , :class =>"like-thumbnail-button") %><%= collection.like_count %></span></p>
       </div>
+      <% collection.comments.each do |comment| %>
+        <div class="caption">
+          <div class="comment">
+            <%= image_tag("comment.jpg") %>
+            <div class="comment-body">
+              <%= comment.body %>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
   <% end %>

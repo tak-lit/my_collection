@@ -5,6 +5,7 @@ class CollectionsController < ApplicationController
   # GET /collections.json
   def index
     @collections = Collection.all.order(id: :asc)
+    @comment = Comment.new
   end
 
   # GET /collections/1
