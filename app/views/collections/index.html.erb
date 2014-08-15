@@ -62,10 +62,11 @@
           <%= link_to '削除', collection, :class => "btn btn-danger", method: :delete, data: { confirm: '本当に消しますか?' } %>
         <% end %>
       </div>
-      <a href="#myModal_<%= collection.id %>" data-toggle="model">
-      <div class="thumbnailImage">
-        <%= image_tag(collection.picture_url)if collection.picture.present? %>
-      </div>
+      <a href="#myModal_<%= collection.id %>" data-toggle="modal">
+        <div class="thumbnailImage">
+          <%= image_tag(collection.picture_url)if collection.picture.present? %>
+        </div>
+      </a>
       <div class="caption">
         <h4><%= collection.title %></h4>
         <p><%= collection.body %></p>
